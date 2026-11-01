@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel — RoyalCheck</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="aurora"><i></i><i></i><i></i></div>
+  <div class="grid-bg"></div>
+ 
+  <!-- ================= LOGIN ================= -->
+  <div class="login-wrap" id="loginView">
+    <div class="login-card glass">
+      <div class="crest">🔐</div>
+      <h1>Admin <span class="grad-text">Login</span></h1>
+      <p style="color:var(--muted)">Enter the admin password to manage your site.</p>
+      <form id="loginForm" novalidate>
+        <label class="field"><span>PASSWORD</span>
+          <input type="password" id="loginPw" placeholder="••••••••" autocomplete="current-password" autofocus>
+        </label>
+        <div class="err" id="loginErr" role="alert"></div>
+        <button class="btn btn-primary btn-block" type="submit">Unlock Panel</button>
+      </form>
+      <p class="hint">First time? Default password is <code>admin123</code>. Change it in <b>Settings</b>.</p>
+      <p class="hint"><a href="index.html" style="color:var(--accent2)">← Back to website</a></p>
+    </div>
+  </div>
+ 
+  <!-- ================= APP ================= -->
+  <div id="appView" hidden>
+    <div class="mobile-tabs" id="mobileTabs"></div>
+    <div class="admin-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="index.html"><span class="brand-mark">♛</span><span>RoyalCheck</span></a>
+        <button class="tab-btn on" data-tab="subs">📊 &nbsp;Submissions</button>
+        <button class="tab-btn" data-tab="msgs">💬 &nbsp;Messages</button>
+        <button class="tab-btn" data-tab="port">🧑‍💻 &nbsp;Portfolio</button>
+        <button class="tab-btn" data-tab="sett">⚙️ &nbsp;Settings</button>
+        <div class="spacer"></div>
+        <a class="tab-btn" href="index.html" target="_blank">🌐 &nbsp;View Website</a>
+        <a class="tab-btn" href="portfolio.html" target="_blank">🎨 &nbsp;View Portfolio</a>
+        <button class="tab-btn" id="logoutBtn">🚪 &nbsp;Log out</button>
+      </aside>
+ 
+      <main class="admin-main">
+        <div class="admin-head">
+          <div><h1 id="paneTitle">Submissions</h1><p id="paneSub">Everything visitors have entered.</p></div>
+          <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">☀️</button>
+        </div>
+ 
+        <!-- ===== SUBMISSIONS ===== -->
+        <section class="tab-pane on" id="pane-subs">
+          <div class="kpis">
+            <div class="kpi glass"><small>Total entries</small><strong id="kTotal">0</strong></div>
+            <div class="kpi glass"><small>👑 Kings</small><strong id="kKing" style="color:var(--gold)">0</strong></div>
+            <div class="kpi glass"><small>🌱 Poor</small><strong id="kPoor" style="color:var(--teal)">0</strong></div>
+            <div class="kpi glass"><small>Split</small><div class="bar"><i class="k" id="barK" style="width:0"></i><i class="p" id="barP" style="width:0"></i></div></div>
+          </div>
+          <div class="card glass">
+            <div class="toolbar">
+              <input type="search" id="subSearch" placeholder="🔎 Search by name…">
+              <select id="subFilter"><option value="all">All choices</option><option value="king">Kings only</option><option value="poor">Poor only</option></select>
+              <button class="btn btn-ghost btn-sm" id="exportCsv">⬇ Export CSV</button>
+              <button class="btn btn-danger btn-sm" id="clearSubs">🗑 Clear all</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>#</th><th>Name</th><th>Choice</th><th>Date &amp; time</th><th></th></tr></thead>
+                <tbody id="subBody"></tbody>
+              </table>
+              <div class="empty" id="subEmpty" hidden>No submissions yet. Share your website and entries will appear here ✨</div>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- ===== MESSAGES ===== -->
+        <section class="tab-pane" id="pane-msgs">
+          <p class="hint" style="margin:0 0 1.2rem">Use <span class="code">{name}</span> anywhere in the title or message — it is replaced with the visitor's name. Use a new line for line breaks.</p>
+          <div class="two-col">
+            <div class="card glass">
+              <h3>👑 &quot;He is a King&quot; message</h3>
+              <p class="desc">Shown when the visitor picks King.</p>
+              <div class="form-grid">
+                <label class="field"><span>EMOJI</span><input id="king-emoji" maxlength="4"></label>
+                <label class="field full"><span>TITLE</span><input id="king-title"></label>
+                <label class="field full"><span>MESSAGE</span><textarea id="king-text" rows="6"></textarea></label>
+              </div>
+              <div class="preview-box"><div class="pe" id="pv-king-e"></div><h4 id="pv-king-t"></h4><p id="pv-king-m"></p></div>
+            </div>
+            <div class="card glass">
+              <h3>🌱 &quot;He is Poor&quot; message</h3>
+              <p class="desc">Shown when the visitor picks Poor.</p>
+              <div class="form-grid">
+                <label class="field"><span>EMOJI</span><input id="poor-emoji" maxlength="4"></label>
+                <label class="field full"><span>TITLE</span><input id="poor-title"></label>
+                <label class="field full"><span>MESSAGE</span><textarea id="poor-text" rows="6"></textarea></label>
+              </div>
+              <div class="preview-box"><div class="pe" id="pv-poor-e"></div><h4 id="pv-poor-t"></h4><p id="pv-poor-m"></p></div>
+            </div>
+          </div>
+          <div class="save-bar glass">
+            <label class="field" style="flex-direction:row;align-items:center;gap:.6rem;margin-right:auto"><span>Preview name</span><input id="pvName" value="Ayush" style="width:140px;padding:.5rem .8rem"></label>
+            <button class="btn btn-ghost" id="resetMsgs">Restore defaults</button>
+            <button class="btn btn-primary" id="saveMsgs">💾 Save messages</button>
+          </div>
+        </section>
+ 
+        <!-- ===== PORTFOLIO ===== -->
+        <section class="tab-pane" id="pane-port">
+          <div class="card glass">
+            <h3>👤 Profile</h3><p class="desc">Main details shown in the hero and about sections.</p>
+            <div class="form-grid">
+              <label class="field"><span>FULL NAME</span><input data-path="portfolio.name"></label>
+              <label class="field"><span>PHOTO URL (optional)</span><input data-path="portfolio.photo" placeholder="https://…/me.jpg"></label>
+              <label class="field full"><span>ROLES (comma separated — typed animation)</span><input data-path="portfolio.roles"></label>
+              <label class="field full"><span>TAGLINE</span><input data-path="portfolio.tagline"></label>
+              <label class="field full"><span>ABOUT ME (blank line = new paragraph)</span><textarea data-path="portfolio.about" rows="6"></textarea></label>
+              <label class="field"><span>RESUME / CV LINK</span><input data-path="portfolio.resume" placeholder="https://…/resume.pdf"></label>
+            </div>
+          </div>
+          <div class="card glass">
+            <h3>📞 Contact details</h3><p class="desc">These appear in the Contact section and footer.</p>
+            <div class="form-grid">
+              <label class="field"><span>EMAIL</span><input type="email" data-path="portfolio.email"></label>
+              <label class="field"><span>PHONE</span><input data-path="portfolio.phone"></label>
+              <label class="field"><span>LOCATION</span><input data-path="portfolio.location"></label>
+              <label class="field"><span>WEBSITE</span><input data-path="portfolio.website"></label>
+              <label class="field"><span>GITHUB</span><input data-path="portfolio.socials.github"></label>
+              <label class="field"><span>LINKEDIN</span><input data-path="portfolio.socials.linkedin"></label>
+              <label class="field"><span>TWITTER / X</span><input data-path="portfolio.socials.twitter"></label>
+              <label class="field"><span>INSTAGRAM</span><input data-path="portfolio.socials.instagram"></label>
+            </div>
+          </div>
+          <div class="card glass"><h3>📈 Stats</h3><p class="desc">Animated counters (value + suffix like +).</p><div id="ed-stats"></div><button class="btn btn-ghost btn-sm" id="add-stats">＋ Add stat</button></div>
+          <div class="card glass"><h3>🛠 Skills</h3><p class="desc">Level is 0–100.</p><div id="ed-skills"></div><button class="btn btn-ghost btn-sm" id="add-skills">＋ Add skill</button></div>
+          <div class="card glass"><h3>💼 Experience</h3><p class="desc">Shown on the timeline.</p><div id="ed-experience"></div><button class="btn btn-ghost btn-sm" id="add-experience">＋ Add experience</button></div>
+          <div class="card glass"><h3>🚀 Projects</h3><p class="desc">Cards with hover tilt effect.</p><div id="ed-projects"></div><button class="btn btn-ghost btn-sm" id="add-projects">＋ Add project</button></div>
+          <div class="save-bar glass">
+            <a class="btn btn-ghost" href="portfolio.html" target="_blank">Preview ↗</a>
+            <button class="btn btn-primary" id="savePort">💾 Save portfolio</button>
+          </div>
+        </section>
+ 
+        <!-- ===== SETTINGS ===== -->
+        <section class="tab-pane" id="pane-sett">
+          <div class="two-col">
+            <div class="card glass">
+              <h3>🔑 Change password</h3><p class="desc">Minimum 6 characters.</p>
+              <form id="pwForm" class="form-grid" novalidate>
+                <label class="field full"><span>CURRENT PASSWORD</span><input type="password" id="pwOld" autocomplete="current-password"></label>
+                <label class="field full"><span>NEW PASSWORD</span><input type="password" id="pwNew" autocomplete="new-password"></label>
+                <label class="field full"><span>CONFIRM NEW PASSWORD</span><input type="password" id="pwNew2" autocomplete="new-password"></label>
+                <div class="full"><button class="btn btn-primary" type="submit">Update password</button></div>
+              </form>
+            </div>
+            <div class="card glass">
+              <h3>💾 Backup &amp; restore</h3><p class="desc">Data lives in this browser. Export a backup to move it elsewhere.</p>
+              <div style="display:grid;gap:.8rem">
+                <button class="btn btn-ghost" id="exportJson">⬇ Download backup (.json)</button>
+                <label class="btn btn-ghost" style="cursor:pointer">⬆ Import backup<input type="file" id="importJson" accept="application/json" hidden></label>
+                <button class="btn btn-danger" id="resetAll">⚠ Reset everything</button>
+              </div>
+            </div>
+          </div>
+          <p class="hint">Note: this panel has no server, so protection is only a convenience lock for the browser — anyone with access to this device can bypass it.</p>
+        </section>
+      </main>
+    </div>
+  </div>
+ 
+  <div id="toasts"></div>
+  <script src="store.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
