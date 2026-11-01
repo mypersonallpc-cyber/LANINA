@@ -18,7 +18,7 @@
   }
  
   var DEFAULTS = {
-    adminHash: hash('admin123'),
+    adminHash: hash('Mehacker'),
     messages: {
       king: {
         emoji: '👑',
