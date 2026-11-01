@@ -22,27 +22,29 @@
     messages: {
       king: {
         emoji: '👑',
-        title: 'Long live {name}!',
-        text: '{name}, you carry the crown with grace.\nWealth is more than gold — it is the courage to lead, the kindness to give and the vision to build.\nThe throne was always yours.'
+        title: 'Hey Madarchod: {name}!',
+        text: '{name},Itna Madarchod ho gaye ho tum, ki ab mai tumhe bataun kitna? \n Sun le mere randi ke beta: \n Tumhara papa yahan hai, MC. \n Ummid karta hoon dobara apni gand nahi maraoge.\n Madarchod… bada aaya King banne, laude.'
       },
       poor: {
         emoji: '🌱',
-        title: '{name}, your story is just beginning',
-        text: '{name}, being poor in coins is never being poor in spirit.\nEvery great journey starts with an empty pocket and a full heart.\nKeep going — your richest chapter is ahead.'
+        title: '{name}, Haan Laude Tu sach me gareeb hai madarchod',
+        text: '{name}, Hey, itne madarchod baan gaye ho ki ab tumhe kitna samjhaun, behenchod? Sun le, mere randi ke bete — tumhara baap yahin khada hai, MC. Aasha hai dobara apni gand nahi maroge. Aur haan, madarchod, tu sach me gareeb hai, laude — mujhe maat bata, mere bete. harami ke aulaad.
+
+'
       }
     },
     submissions: [],
     portfolio: {
-      name: 'Alex Morgan',
+      name: 'KISLAY :)',
       roles: 'Web Developer, UI/UX Designer, Creative Thinker',
       tagline: 'I craft fast, beautiful and meaningful digital experiences that people love to use.',
       photo: '',
       resume: '',
       about: 'I am a passionate developer and designer with a love for clean code and pixel-perfect interfaces. I turn ideas into polished products, from the first sketch to the final deploy.\n\nWhen I am not building, I explore new technologies, write about design, and mentor people who are starting their journey in tech.',
-      email: 'hello@example.com',
-      phone: '+91 98765 43210',
+      email: 'contactmimebot@gmail.com',
+      phone: '+989162806287',
       location: 'Varanasi, India',
-      website: 'https://example.com',
+      website: 'https://mypersonallpc-cyber.github.io/LANINA/index.html',
       socials: { github: 'https://github.com/', linkedin: 'https://linkedin.com/', twitter: 'https://twitter.com/', instagram: 'https://instagram.com/' },
       stats: [
         { label: 'Projects Done', value: 48, suffix: '+' },
