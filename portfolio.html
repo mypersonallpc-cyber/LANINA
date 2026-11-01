@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <meta name="description" content="Personal portfolio">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="progress"></div>
+  <div class="aurora"><i></i><i></i><i></i></div>
+  <div class="grid-bg"></div>
+  <canvas id="particles"></canvas>
+ 
+  <nav class="p-nav" id="nav">
+    <a class="brand" href="#home"><span class="brand-mark" id="navMark">A</span><span id="navName">Portfolio</span></a>
+    <ul id="navList">
+      <li><a href="#home" class="on">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="index.html">← Main site</a></li>
+    </ul>
+    <div style="display:flex;gap:.6rem">
+      <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">☀️</button>
+      <button id="burger" class="icon-btn burger" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
+ 
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="hello reveal"><span class="dot"></span> Available for new projects</div>
+        <h1 class="reveal" style="--d:.1s">Hi, I'm <span class="grad-text" id="heroName"></span></h1>
+        <div class="typed reveal" style="--d:.2s"><span id="typed"></span><span class="caret"></span></div>
+        <p class="tagline reveal" style="--d:.3s" id="heroTag"></p>
+        <div class="cta reveal" style="--d:.4s">
+          <a class="btn btn-primary" href="#contact">Hire me ✉</a>
+          <a class="btn btn-ghost" href="#projects">View my work</a>
+          <a class="btn btn-ghost" id="resumeBtn" href="#" target="_blank" rel="noopener" hidden>Résumé ⬇</a>
+        </div>
+        <div class="socials reveal" style="--d:.5s" id="heroSocials"></div>
+      </div>
+      <div class="reveal zoom" style="--d:.3s">
+        <div class="avatar-wrap" id="parallaxAvatar">
+          <div class="avatar" id="avatar"></div>
+          <span class="float-chip c1">⚡ Fast</span>
+          <span class="float-chip c2">🎨 Creative</span>
+          <span class="float-chip c3">🚀 Reliable</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"></div>
+  </header>
+ 
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+ 
+  <!-- ABOUT -->
+  <section class="sec" id="about">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">About me</span><h2>Designer, developer &amp; <span class="grad-text">dreamer</span></h2></div>
+      <div class="about-grid">
+        <div class="about-text reveal left">
+          <div id="aboutText"></div>
+          <div class="info-list" id="infoList"></div>
+        </div>
+        <div class="stats" id="stats"></div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- SKILLS -->
+  <section class="sec" id="skills">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">What I do best</span><h2>My <span class="grad-text">skills</span></h2><p>Tools and talents I use every day to bring ideas to life.</p></div>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+  </section>
+ 
+  <!-- EXPERIENCE -->
+  <section class="sec" id="experience">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">My journey</span><h2>Work <span class="grad-text">experience</span></h2></div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+ 
+  <!-- PROJECTS -->
+  <section class="sec" id="projects">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">Selected work</span><h2>Featured <span class="grad-text">projects</span></h2><p>A few things I'm proud of. Hover the cards to explore.</p></div>
+      <div class="projects" id="projectGrid"></div>
+    </div>
+  </section>
+ 
+  <!-- CONTACT -->
+  <section class="sec" id="contact">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">Get in touch</span><h2>Let's build something <span class="grad-text">great</span></h2><p>Have a project or an idea? Send a message — I reply fast.</p></div>
+      <div class="contact-grid">
+        <div class="contact-cards" id="contactCards"></div>
+        <form class="contact-form glass reveal right" id="contactForm" novalidate>
+          <label class="field"><span>YOUR NAME</span><input id="cfName" placeholder="John Doe"></label>
+          <label class="field"><span>YOUR EMAIL</span><input id="cfEmail" type="email" placeholder="john@email.com"></label>
+          <label class="field"><span>MESSAGE</span><textarea id="cfMsg" rows="5" placeholder="Tell me about your project…"></textarea></label>
+          <button class="btn btn-primary" type="submit">Send message ➤</button>
+          <div class="err" id="cfErr"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+ 
+  <footer class="p-footer" id="footer"></footer>
+  <button id="toTop" aria-label="Back to top">↑</button>
+ 
+  <div id="toasts"></div>
+  <script src="store.js"></script>
+  <script src="portfolio.js"></script>
+</body>
+</html>
