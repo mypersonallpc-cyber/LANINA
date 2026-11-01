@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RoyalCheck — Are you a King?</title>
+  <meta name="description" content="Enter your name and discover your destiny.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="aurora"><i></i><i></i><i></i></div>
+  <div class="grid-bg"></div>
+  <canvas id="fx"></canvas>
+ 
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">♛</span><span>RoyalCheck</span></a>
+    <nav>
+      <a href="portfolio.html" class="hide-sm">Portfolio</a>
+      <a href="admin.html" class="hide-sm">Admin</a>
+      <button id="themeBtn" class="icon-btn" aria-label="Toggle light or dark theme">☀️</button>
+    </nav>
+  </header>
+ 
+  <main class="stage">
+    <div class="stage-inner">
+      <div class="steps" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+ 
+      <!-- STEP 1: NAME -->
+      <section id="stepName" class="panel glass active" aria-labelledby="t1">
+        <div class="crest">👑</div>
+        <h1 id="t1">What is your <span class="grad-text">name?</span></h1>
+        <p class="sub">Type your name below and find out what destiny has written for you.</p>
+        <form id="nameForm" novalidate>
+          <div class="input-wrap">
+            <input id="nameInput" type="text" maxlength="30" placeholder="e.g. Ayush" autocomplete="off" aria-label="Your name" autofocus>
+          </div>
+          <div class="err" id="nameErr" role="alert"></div>
+          <button class="btn btn-primary btn-block" type="submit">Submit &nbsp;→</button>
+        </form>
+      </section>
+ 
+      <!-- STEP 2: CHOICE -->
+      <section id="stepChoice" class="panel glass" aria-labelledby="t2">
+        <h1 id="t2">Choose your <span class="grad-text">destiny</span></h1>
+        <p class="sub">Pick the statement that feels right.</p>
+        <div class="choices">
+          <button class="choice king" id="btnKing" type="button">
+            <span class="em">👑</span>
+            <span><b id="kingLabel">… is a King</b><small>Rule with wealth &amp; wisdom</small></span>
+            <span class="arrow">→</span>
+          </button>
+          <button class="choice poor" id="btnPoor" type="button">
+            <span class="em">🌱</span>
+            <span><b id="poorLabel">… is Poor</b><small>Rich in dreams, humble in start</small></span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+        <button class="link-btn" id="backBtn" type="button">← Change name</button>
+      </section>
+ 
+      <!-- STEP 3: RESULT -->
+      <section id="stepResult" class="panel glass result" data-kind="king" aria-live="polite">
+        <span class="big-em" id="resEmoji">👑</span><br>
+        <span class="badge" id="resBadge">King</span>
+        <h2 id="resTitle"></h2>
+        <p class="msg" id="resMsg"></p>
+        <div class="actions">
+          <button class="btn btn-primary" id="againBtn" type="button">↺ Try another name</button>
+          <button class="btn btn-ghost" id="copyBtn" type="button">⧉ Copy message</button>
+          <a class="btn btn-ghost" href="portfolio.html">View portfolio</a>
+        </div>
+      </section>
+ 
+      <p class="foot-note">Messages on this page are controlled from the <a href="admin.html" style="color:var(--accent2)">Admin Panel</a>.</p>
+    </div>
+  </main>
+ 
+  <div id="toasts"></div>
+  <script src="store.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>
